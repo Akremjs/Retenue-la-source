@@ -20,9 +20,11 @@
     </record>
 
     <record id="action_retenue_source_declaration_wizard" model="ir.actions.act_window">
-        <field name="name">Générer déclaration RAS</field>
+        <field name="name">Générer XML TEJ (RAS)</field>
         <field name="res_model">retenue.source.declaration.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
+        <field name="binding_model_id" ref="model_retenue_source_record"/>
+        <field name="binding_view_types">list,form</field>
     </record>
 </odoo>

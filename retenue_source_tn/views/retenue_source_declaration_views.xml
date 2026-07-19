@@ -96,11 +96,12 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- Sous Clients — à côté de « Retenue à la source » (visible) -->
     <menuitem
         id="menu_retenue_source_root"
-        name="RAS Tunisie"
-        parent="account.menu_finance"
-        sequence="55"
+        name="RAS Tunisie / TEJ"
+        parent="account.menu_finance_receivables"
+        sequence="95"
     />
     <menuitem
         id="menu_retenue_source_declaration"
@@ -111,9 +112,25 @@
     />
     <menuitem
         id="menu_retenue_source_declaration_wizard"
-        name="Générer déclaration"
+        name="Générer XML TEJ"
         parent="menu_retenue_source_root"
         action="action_retenue_source_declaration_wizard"
         sequence="20"
+    />
+
+    <!-- Accès direct Configuration -->
+    <menuitem
+        id="menu_retenue_source_declaration_config"
+        name="Déclarations RAS / TEJ"
+        parent="account.menu_finance_configuration"
+        action="action_retenue_source_declaration"
+        sequence="96"
+    />
+    <menuitem
+        id="menu_retenue_source_declaration_wizard_config"
+        name="Générer XML TEJ"
+        parent="account.menu_finance_configuration"
+        action="action_retenue_source_declaration_wizard"
+        sequence="97"
     />
 </odoo>

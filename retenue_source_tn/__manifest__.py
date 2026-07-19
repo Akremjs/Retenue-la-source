@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "Retenue à la source (Tunisie)",
-    "version": "17.0.2.0.0",
+    "version": "17.0.2.0.1",
     "category": "Accounting/Localizations",
     "summary": "Retenue à la source clients et fournisseurs - Tunisie",
     "description": """
