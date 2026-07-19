@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "Retenue à la source (Tunisie)",
-    "version": "17.0.1.2.1",
+    "version": "17.0.1.2.2",
     "category": "Accounting/Localizations",
     "summary": "Retenue à la source clients et fournisseurs - Tunisie",
     "description": """
@@ -28,7 +28,7 @@ WhatsApp : +216 54 444 373
 """,
     "author": "AKREM.KHELIFI",
     "website": "https://merkago.net",
-    "license": "LGPL-3",
+    "license": "OPL-1",
     "depends": ["account", "mail"],
     "data": [
         "security/ir.model.access.csv",
