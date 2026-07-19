@@ -7,3 +7,5 @@ from . import account_tax
 from . import account_payment
 from . import account_move
 from . import retenu_source_record
+from . import retenue_source_declaration
+from . import retenue_source_tej_xml

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_template_retenue_certificate" model="mail.template">
+        <field name="name">Certificat RAS</field>
+        <field name="model_id" ref="model_retenue_source_record"/>
+        <field name="subject">Certificat de retenue à la source {{ object.certificate_number or object.name }}</field>
+        <field name="email_from">{{ (object.company_id.email or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>Bonjour <t t-out="object.partner_id.name or ''"/>,</p>
+                <p>
+                    Veuillez trouver ci-joint le certificat de retenue à la source
+                    <strong t-out="object.certificate_number or object.name"/>
+                    relatif à la facture <t t-out="object.invoice_id.name or ''"/>
+                    (montant retenu : <t t-out="object.withholding_tax_amount"/>
+                    <t t-out="object.currency_id.name"/>).
+                </p>
+                <p>Cordialement,<br/><t t-out="object.company_id.name"/></p>
+            </div>
+        </field>
+        <field name="report_template_ids" eval="[(4, ref('retenue_source_tn.action_report_retenue_certificate'))]"/>
+        <field name="auto_delete" eval="True"/>
+    </record>
+
+    <record id="ir_cron_retenue_tej_deadline" model="ir.cron">
+        <field name="name">RAS Tunisie : rappels échéance TEJ</field>
+        <field name="model_id" ref="model_retenue_source_declaration"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_deadline_reminders()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

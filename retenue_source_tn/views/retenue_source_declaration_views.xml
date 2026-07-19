@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_retenue_source_declaration_tree" model="ir.ui.view">
+        <field name="name">retenue.source.declaration.tree</field>
+        <field name="model">retenue.source.declaration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="year"/>
+                <field name="month"/>
+                <field name="acte_depot"/>
+                <field name="deadline_date"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="total_rs"/>
+                <field name="state" widget="badge"
+                    decoration-info="state == 'draft'"
+                    decoration-warning="state == 'confirmed'"
+                    decoration-primary="state == 'deposited'"
+                    decoration-success="state == 'paid'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_retenue_source_declaration_form" model="ir.ui.view">
+        <field name="name">retenue.source.declaration.form</field>
+        <field name="model">retenue.source.declaration</field>
+        <field name="arch" type="xml">
+            <form string="Déclaration mensuelle RAS">
+                <header>
+                    <button name="action_load_records" type="object" string="Charger RAS du mois"
+                            class="btn-secondary" invisible="state != 'draft'"/>
+                    <button name="action_confirm" type="object" string="Valider"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_export_xml" type="object" string="Télécharger XML TEJ"
+                            class="btn-primary" invisible="state == 'draft'"/>
+                    <button name="action_set_deposited" type="object" string="Marquer déposée"
+                            invisible="state != 'confirmed'"/>
+                    <button name="action_set_paid" type="object" string="Marquer payée"
+                            invisible="state not in ('confirmed', 'deposited')"/>
+                    <button name="action_reset_draft" type="object" string="Remettre en brouillon"
+                            invisible="state in ('draft', 'paid')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,deposited,paid"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Période">
+                            <field name="company_id" readonly="state != 'draft'"/>
+                            <field name="year" readonly="state != 'draft'"/>
+                            <field name="month" readonly="state != 'draft'"/>
+                            <field name="acte_depot" readonly="state != 'draft'"/>
+                            <field name="deadline_date"/>
+                        </group>
+                        <group string="Totaux / XML">
+                            <field name="currency_id" invisible="1"/>
+                            <field name="total_base"/>
+                            <field name="total_rs"/>
+                            <field name="xml_filename"/>
+                            <field name="xml_attachment_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Lignes RAS" name="lines">
+                            <field name="line_ids" readonly="state != 'draft'">
+                                <tree editable="bottom">
+                                    <field name="record_id"/>
+                                    <field name="partner_id"/>
+                                    <field name="rs_type_id"/>
+                                    <field name="date_reglement"/>
+                                    <field name="certificate_number"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="amount_base"/>
+                                    <field name="amount_rs"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes" placeholder="Notes internes, n° dépôt TEJ, etc."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_retenue_source_declaration" model="ir.actions.act_window">
+        <field name="name">Déclarations mensuelles RAS</field>
+        <field name="res_model">retenue.source.declaration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_retenue_source_root"
+        name="RAS Tunisie"
+        parent="account.menu_finance"
+        sequence="55"
+    />
+    <menuitem
+        id="menu_retenue_source_declaration"
+        name="Déclarations mensuelles"
+        parent="menu_retenue_source_root"
+        action="action_retenue_source_declaration"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_retenue_source_declaration_wizard"
+        name="Générer déclaration"
+        parent="menu_retenue_source_root"
+        action="action_retenue_source_declaration_wizard"
+        sequence="20"
+    />
+</odoo>

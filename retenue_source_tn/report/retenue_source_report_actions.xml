@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_retenue_certificate" model="ir.actions.report">
+        <field name="name">Certificat RAS</field>
+        <field name="model">retenue.source.record</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">retenue_source_tn.report_retenue_certificate</field>
+        <field name="report_file">retenue_source_tn.report_retenue_certificate</field>
+        <field name="print_report_name">'Certificat_RAS_%s' % (object.certificate_number or object.name)</field>
+        <field name="binding_model_id" ref="model_retenue_source_record"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -9,6 +9,12 @@
                 <group string="Retenue à la source" name="retenue_source_tn">
                     <field name="rs_retenue_exempt"/>
                     <field name="rs_retenue_exempt_reason" invisible="not rs_retenue_exempt"/>
+                    <field name="rs_tej_id_type"/>
+                    <field name="rs_tej_category"/>
+                    <field name="rs_tej_resident"/>
+                    <field name="rs_tej_activity"/>
+                    <field name="rs_tej_birth_date" invisible="rs_tej_id_type not in ('2', '3', '4')"/>
+                    <field name="rs_tej_id_country_id" invisible="rs_tej_id_type in ('1', '2')"/>
                 </group>
             </xpath>
         </field>
