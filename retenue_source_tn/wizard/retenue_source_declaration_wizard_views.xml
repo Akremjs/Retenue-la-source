@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_retenue_source_declaration_wizard_form" model="ir.ui.view">
+        <field name="name">retenue.source.declaration.wizard.form</field>
+        <field name="model">retenue.source.declaration.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Générer déclaration mensuelle RAS">
+                <group>
+                    <field name="company_id"/>
+                    <field name="year"/>
+                    <field name="month"/>
+                    <field name="acte_depot"/>
+                </group>
+                <footer>
+                    <button name="action_generate" type="object" string="Générer" class="btn-primary"/>
+                    <button string="Annuler" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_retenue_source_declaration_wizard" model="ir.actions.act_window">
+        <field name="name">Générer déclaration RAS</field>
+        <field name="res_model">retenue.source.declaration.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

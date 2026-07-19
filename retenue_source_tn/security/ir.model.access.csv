@@ -3,3 +3,7 @@ access_retenue_source_record_user,access.retenue.source.record.user,model_retenu
 access_retenue_source_wizard_user,access.retenue.source.wizard.user,model_retenue_source_wizard,account.group_account_invoice,1,1,1,1
 access_retenue_source_type_user,access.retenue.source.type.user,model_retenue_source_type,account.group_account_invoice,1,1,1,1
 access_retenue_source_type_manager,access.retenue.source.type.manager,model_retenue_source_type,account.group_account_manager,1,1,1,1
+access_retenue_source_declaration_user,access.retenue.source.declaration.user,model_retenue_source_declaration,account.group_account_invoice,1,1,1,1
+access_retenue_source_declaration_manager,access.retenue.source.declaration.manager,model_retenue_source_declaration,account.group_account_manager,1,1,1,1
+access_retenue_source_declaration_line_user,access.retenue.source.declaration.line.user,model_retenue_source_declaration_line,account.group_account_invoice,1,1,1,1
+access_retenue_source_declaration_wizard_user,access.retenue.source.declaration.wizard.user,model_retenue_source_declaration_wizard,account.group_account_invoice,1,1,1,1

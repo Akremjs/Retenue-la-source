@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Codes d'opération TEJ indicatifs (IdTypeOperation).
+  Remplacez par les codes exacts du fichier officiel TEJRSCodesOperations_v1.0.xsd
+  dès qu'il est disponible depuis jibaya.tn.
+-->
+<Codes hint="true">
+  <Operation code="RS01" label="Marchandises" taux="1.0"/>
+  <Operation code="RS02" label="Travaux" taux="1.5"/>
+  <Operation code="RS03" label="Honoraires / commissions / courtages / loyers d'usine" taux="3.0"/>
+  <Operation code="RS04" label="Rémunérations versées aux non résidents" taux="5.0"/>
+  <Operation code="RS05" label="Honoraires / BNC (taux 10%)" taux="10.0"/>
+  <Operation code="RS06" label="Loyers" taux="15.0"/>
+  <Operation code="RS07" label="Dividendes" taux="10.0"/>
+</Codes>

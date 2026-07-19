@@ -14,4 +14,18 @@
         <field name="padding">4</field>
         <field name="company_id" eval="False"/>
     </record>
+    <record id="seq_retenue_source_certificate" model="ir.sequence">
+        <field name="name">Certificat RAS</field>
+        <field name="code">retenue.source.certificate</field>
+        <field name="prefix">CERT-RAS/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_retenue_source_declaration" model="ir.sequence">
+        <field name="name">Déclaration mensuelle RAS</field>
+        <field name="code">retenue.source.declaration</field>
+        <field name="prefix">DECL-RAS/%(year)s/</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
 </odoo>

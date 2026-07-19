@@ -20,3 +20,27 @@ class ResCompany(models.Model):
         default=True,
         help="Si active, exige un matricule/VAT sur le partenaire avant creation RAS.",
     )
+    rs_tej_id_type = fields.Selection(
+        [
+            ("1", "Matricule fiscal"),
+            ("2", "CIN"),
+            ("3", "Passeport"),
+            ("4", "Carte de séjour"),
+            ("5", "Autre identifiant fiscal"),
+        ],
+        string="Type identifiant TEJ (déclarant)",
+        default="1",
+    )
+    rs_tej_category = fields.Selection(
+        [
+            ("pp", "Personne physique"),
+            ("pm", "Personne morale"),
+        ],
+        string="Catégorie contribuable TEJ (déclarant)",
+        default="pm",
+    )
+    rs_tej_schema_version = fields.Char(
+        string="Version schéma TEJ",
+        default="1.0",
+        help="Attribut VersionSchema du fichier DeclarationsRS.",
+    )

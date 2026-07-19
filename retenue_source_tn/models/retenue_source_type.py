@@ -8,7 +8,11 @@ class RetenueSourceType(models.Model):
     _order = "sequence, code"
 
     name = fields.Char(required=True, translate=True)
-    code = fields.Char(required=True, help="Code operation (TEJ / interne)")
+    code = fields.Char(required=True, help="Code interne Odoo")
+    tej_code = fields.Char(
+        string="Code TEJ (IdTypeOperation)",
+        help="Code officiel IdTypeOperation pour le XML TEJ.",
+    )
     sequence = fields.Integer(default=10)
     rate = fields.Float(
         string="Taux %",

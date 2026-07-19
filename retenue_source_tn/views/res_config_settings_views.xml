@@ -16,6 +16,11 @@
                     <setting string="Exiger matricule fiscal" help="Exige le champ VAT / matricule sur le partenaire.">
                         <field name="rs_require_partner_vat"/>
                     </setting>
+                    <setting string="TEJ déclarant" help="Identifiant et catégorie du déclarant pour l'export XML.">
+                        <field name="rs_tej_id_type"/>
+                        <field name="rs_tej_category"/>
+                        <field name="rs_tej_schema_version"/>
+                    </setting>
                 </block>
             </xpath>
         </field>
