@@ -4,7 +4,8 @@
     <h3 class="oe_slogan">Clients &amp; fournisseurs</h3>
     <p class="oe_mt32 text-center">
       Module Odoo pour g&eacute;rer la <strong>retenue &agrave; la source</strong> (RAS)&nbsp;:
-      calcul, &eacute;criture comptable, lettrage, seuil et types d'op&eacute;ration TEJ.
+      calcul, &eacute;criture comptable, certificat PDF, d&eacute;claration mensuelle et
+      <strong>export XML TEJ</strong> (d&eacute;p&ocirc;t sur tej.finances.gov.tn).
     </p>
   </div>
 </section>
@@ -19,7 +20,8 @@
       <li>Documents RAS (brouillon / comptabilis&eacute; / annul&eacute;)</li>
       <li>Seuil configurable + types TEJ + contr&ocirc;les matricule</li>
       <li>Certificat PDF + envoi email</li>
-      <li>D&eacute;claration mensuelle + export XML TEJ</li>
+      <li>D&eacute;claration mensuelle RAS</li>
+      <li><strong>G&eacute;n&eacute;ration XML TEJ</strong> conforme CCT (AjouterCertificats)</li>
     </ul>
   </div>
 </section>
@@ -40,10 +42,20 @@
     <p>Suivi des retenues clients / fournisseurs (r&eacute;f&eacute;rence, base, montant, statut).</p>
     <p><img class="oe_screenshot" src="screenshot_3.png" alt="Liste RAS Clients"/></p>
 
-    <h4>4. Configuration journal</h4>
+    <h4>4. D&eacute;claration mensuelle RAS</h4>
+    <p>G&eacute;n&eacute;rez la d&eacute;claration du mois, chargez les RAS comptabilis&eacute;es, validez.</p>
+    <p><img class="oe_screenshot" src="screenshot_4.png" alt="Declaration mensuelle RAS"/></p>
+
+    <h4>5. G&eacute;n&eacute;ration XML TEJ</h4>
+    <p>T&eacute;l&eacute;chargez le fichier XML
+      <em>[MATRICULE]-[ANNEE]-[MOIS]-[ACTE].xml</em>
+      pour d&eacute;p&ocirc;t sur <a href="https://tej.finances.gov.tn" target="_blank">tej.finances.gov.tn</a>.</p>
+    <p><img class="oe_screenshot" src="screenshot_5.png" alt="Generation XML TEJ"/></p>
+
+    <h4>6. Configuration journal</h4>
     <p><img class="oe_screenshot" src="journal_ras.PNG" alt="Journal RAS"/></p>
 
-    <h4>5. Configuration taxe</h4>
+    <h4>7. Configuration taxe</h4>
     <p><img class="oe_screenshot" src="tax_ras.PNG" alt="Taxe RAS"/></p>
   </div>
 </section>
@@ -55,6 +67,7 @@
       <li>Journal : activer <em>RAS Clients</em> ou <em>RAS Fournisseurs</em> + compte par d&eacute;faut</li>
       <li>Taxe : cocher <em>Taxe RAS</em> (vente / achat) + type d'op&eacute;ration TEJ</li>
       <li>Facture publi&eacute;e non pay&eacute;e (&gt; seuil) &rarr; bouton <strong>Retenue &agrave; la source</strong></li>
+      <li>Liste RAS &rarr; <strong>G&eacute;n&eacute;rer XML TEJ</strong> &rarr; Valider &rarr; T&eacute;l&eacute;charger XML</li>
     </ol>
   </div>
 </section>
@@ -67,6 +80,6 @@
       WhatsApp : +216 54 444 373<br/>
       Site : <a href="https://merkago.net">https://merkago.net</a>
     </p>
-    <p>Technical Name : <strong>retenue_source_tn</strong> | Licence OPL-1 | Prix : <strong>50 USD</strong></p>
+    <p>Technical Name : <strong>retenue_source_tn</strong> | Licence OPL-1 | Prix affich&eacute; : <strong>71.43 USD</strong> (votre net ~50 USD apr&egrave;s commission Odoo Apps 30%)</p>
   </div>
 </section>
