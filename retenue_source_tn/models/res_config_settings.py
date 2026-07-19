@@ -17,3 +17,15 @@ class ResConfigSettings(models.TransientModel):
         related="company_id.rs_require_partner_vat",
         readonly=False,
     )
+    rs_tej_id_type = fields.Selection(
+        related="company_id.rs_tej_id_type",
+        readonly=False,
+    )
+    rs_tej_category = fields.Selection(
+        related="company_id.rs_tej_category",
+        readonly=False,
+    )
+    rs_tej_schema_version = fields.Char(
+        related="company_id.rs_tej_schema_version",
+        readonly=False,
+    )
