@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_retenu_source_record_tree" model="ir.ui.view">
+        <field name="name">retenu.source.record.tree</field>
+        <field name="model">retenue.source.record</field>
+        <field name="arch" type="xml">
+            <list string="Retenue à la source" create="0">
+                <field name="name"/>
+                <field name="invoice_id"/>
+                <field name="rs_account_move_id"/>
+                <field name="partner_id"/>
+                <field name="date_reglement"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="withholding_number"/>
+                <field name="withholding_base_amount"/>
+                <field name="withholding_tax_amount" column_invisible="1"/>
+                <field name="payment_amount"/>
+                <field name="state" widget="badge"
+                    decoration-success="state == 'posted'"
+                    decoration-warning="state == 'draft'"
+                    decoration-danger="state == 'cancel'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_retenu_source_record_form" model="ir.ui.view">
+        <field name="name">retenu.source.record.form</field>
+        <field name="model">retenue.source.record</field>
+        <field name="arch" type="xml">
+            <form string="Retenue à la source" create="0">
+                <header>
+                    <button
+                        name="action_post"
+                        string="Confirmer"
+                        type="object"
+                        class="btn-primary"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        name="action_reset_to_draft_posted"
+                        string="Remettre en brouillon"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="state != 'posted'"
+                        confirm="Cela délettrera et annulera l'écriture de retenue. La RAS repassera en brouillon et pourra etre supprimée."
+                    />
+                    <button
+                        name="action_reset_to_draft"
+                        string="Remettre en brouillon"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="state != 'cancel'"
+                    />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,posted,cancel"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button
+                            name="action_open_withholding_entry"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-book"
+                            invisible="state != 'posted'"
+                        >
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Écriture</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group string="Général">
+                            <field name="name" readonly="1"/>
+                            <field name="move_type" readonly="1"/>
+                            <field name="invoice_id" readonly="1"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="payment_journal_id" readonly="state != 'draft'"/>
+                            <field name="date_reglement" readonly="state != 'draft'"/>
+                        </group>
+                        <group string="Retenue">
+                            <field name="currency_id" invisible="1"/>
+                            <field name="withholding_tax_id" readonly="state != 'draft'"/>
+                            <field name="rs_type_id" readonly="1"/>
+                            <field name="withholding_base_amount" readonly="state != 'draft'"/>
+                            <field name="withholding_tax_amount" invisible="1"/>
+                            <field name="payment_amount" readonly="1"/>
+                            <field name="withholding_number" readonly="state == 'cancel'"/>
+                            <field name="memo" readonly="state == 'cancel'"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_retenu_source_record_search" model="ir.ui.view">
+        <field name="name">retenu.source.record.search</field>
+        <field name="model">retenue.source.record</field>
+        <field name="arch" type="xml">
+            <search string="Retenue à la source">
+                <field name="name"/>
+                <field name="invoice_id"/>
+                <field name="partner_id"/>
+                <field name="withholding_number"/>
+                <filter name="filter_sales" string="Clients" domain="[('move_type', '=', 'sale')]"/>
+                <filter name="filter_purchases" string="Fournisseurs" domain="[('move_type', '=', 'purchase')]"/>
+                <separator/>
+                <filter name="filter_draft" string="Brouillon" domain="[('state', '=', 'draft')]"/>
+                <filter name="filter_posted" string="Comptabilisé" domain="[('state', '=', 'posted')]"/>
+                <filter name="filter_cancel" string="Annulé" domain="[('state', '=', 'cancel')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_retenu_source_sales" model="ir.actions.act_window">
+        <field name="name">RAS Clients</field>
+        <field name="res_model">retenue.source.record</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('move_type', '=', 'sale')]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <record id="action_retenu_source_purchases" model="ir.actions.act_window">
+        <field name="name">RAS Fournisseurs</field>
+        <field name="res_model">retenue.source.record</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('move_type', '=', 'purchase')]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <menuitem
+        id="menu_retenu_source_sales"
+        name="Retenue à la source"
+        parent="account.menu_finance_receivables"
+        sequence="90"
+        action="action_retenu_source_sales"
+    />
+
+    <menuitem
+        id="menu_retenu_source_purchases"
+        name="Retenue à la source"
+        parent="account.menu_finance_payables"
+        sequence="90"
+        action="action_retenu_source_purchases"
+    />
+</odoo>
