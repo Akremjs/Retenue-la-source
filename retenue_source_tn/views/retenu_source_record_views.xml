@@ -5,6 +5,15 @@
         <field name="model">retenue.source.record</field>
         <field name="arch" type="xml">
             <list string="Retenue à la source" create="0">
+                <header>
+                    <button
+                        name="action_open_tej_xml_wizard"
+                        type="object"
+                        string="Générer XML TEJ (RAS)"
+                        class="btn-primary"
+                        display="always"
+                    />
+                </header>
                 <field name="name"/>
                 <field name="certificate_number"/>
                 <field name="invoice_id"/>
@@ -50,6 +59,12 @@
                         type="object"
                         class="btn-secondary"
                         invisible="state != 'posted'"
+                    />
+                    <button
+                        name="action_open_tej_xml_wizard"
+                        string="Générer XML TEJ (RAS)"
+                        type="object"
+                        class="btn-primary"
                     />
                     <button
                         name="action_reset_to_draft_posted"
