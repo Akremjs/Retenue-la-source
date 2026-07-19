@@ -242,3 +242,11 @@ class RetenueSourceRecord(models.Model):
             "target": "new",
             "context": ctx,
         }
+
+    def action_open_tej_xml_wizard(self):
+        """Ouvre le wizard de déclaration / export XML TEJ depuis la liste RAS."""
+        action = self.env["ir.actions.actions"]._for_xml_id(
+            "retenue_source_tn.action_retenue_source_declaration_wizard"
+        )
+        action["context"] = dict(self.env.context)
+        return action
